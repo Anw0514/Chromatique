@@ -1123,3 +1123,31 @@ Processing by LevelsController#show as */*
 Completed 200 OK in 14ms (Views: 5.1ms | ActiveRecord: 7.3ms)
 
 
+Started GET "/levels/3" for 127.0.0.1 at 2019-03-04 17:41:18 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/flatironschool/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by LevelsController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mLevel Load (0.7ms)[0m  [1m[34mSELECT  "levels".* FROM "levels" WHERE "levels"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/levels_controller.rb:15
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/levels_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "completed_levels" ON "users"."id" = "completed_levels"."user_id" WHERE "completed_levels"."level_id" = $1[0m  [["level_id", 3]]
+[active_model_serializers]   ↳ app/controllers/levels_controller.rb:9
+[active_model_serializers] Rendered LevelSerializer with ActiveModelSerializers::Adapter::Attributes (72.86ms)
+Completed 200 OK in 143ms (Views: 94.7ms | ActiveRecord: 19.5ms)
+
+
+Started GET "/levels/3" for 127.0.0.1 at 2019-03-04 17:44:46 -0500
+Processing by LevelsController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mLevel Load (1.8ms)[0m  [1m[34mSELECT  "levels".* FROM "levels" WHERE "levels"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/levels_controller.rb:15
+[active_model_serializers]   [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/levels_controller.rb:9
+[active_model_serializers]   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "completed_levels" ON "users"."id" = "completed_levels"."user_id" WHERE "completed_levels"."level_id" = $1[0m  [["level_id", 3]]
+[active_model_serializers]   ↳ app/controllers/levels_controller.rb:9
+[active_model_serializers] Rendered LevelSerializer with ActiveModelSerializers::Adapter::Attributes (9.06ms)
+Completed 200 OK in 14ms (Views: 7.4ms | ActiveRecord: 4.4ms)
+
+
