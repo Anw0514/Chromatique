@@ -2,7 +2,7 @@ class LevelsController < ApplicationController
   before_action :get_level, only: %i(show)
 
   def index
-    render json: Level.all, status: 200
+    render json: Level.public_levels, status: 200
   end
 
   def show
