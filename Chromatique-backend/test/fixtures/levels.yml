@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  grid_size: 1
+  top_left: MyString
+  top_right: MyString
+  bottom_left: MyString
+  bottom_right: MyString
+  user: one
+  published: false
+
+two:
+  name: MyString
+  grid_size: 1
+  top_left: MyString
+  top_right: MyString
+  bottom_left: MyString
+  bottom_right: MyString
+  user: two
+  published: false
