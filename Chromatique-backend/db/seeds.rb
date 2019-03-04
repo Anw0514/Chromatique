@@ -13,8 +13,8 @@ CompletedLevel.destroy_all
 cicada = User.create(email: 'anw0514@gmail.com', username: 'Cicada 3301', password: '123')
 ben = User.create(email: 'ben@gmail.com', username: 'Ben', password: '123')
 
-level1 = Level.create(name: 'LEVEL 1', top_left: '#7ECBC9', top_right: '#F6E561', bottom_left: '#0837DC', bottom_right: '#F77259', grid_size: 6, user: cicada, published: true)
-level2 = Level.create(name: 'LEVEL 2', top_left: '#7ECBC9', top_right: '#F6E561', bottom_left: '#0837DC', bottom_right: '#F77259', grid_size: 6, user: cicada, published: false)
+level1 = Level.create(name: 'LEVEL 1', top_left: 'rgb(126, 203, 201)', top_right: 'rgb(246, 229, 97)', bottom_left: 'rgb(8, 55, 220)', bottom_right: 'rgb(247, 114, 89)', grid_size: 6, creator: cicada, published: true)
+
 
 CompletedLevel.create(user: ben, level: level1)
 CompletedLevel.create(user: cicada, level: level1)
