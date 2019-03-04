@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.destroy_all
+Level.destroy_all
+CompletedLevel.destroy_all
+
+cicada = User.create(email: 'anw0514@gmail.com', username: 'Cicada 3301', password: '123')
+Level.create(name: 'LEVEL 1', top_left: '#7ECBC9', top_right: '#F6E561', bottom_left: '#0837DC', bottom_right: '#F77259', grid_size: 6, user: cicada, published: true)
