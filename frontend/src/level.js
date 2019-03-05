@@ -23,10 +23,15 @@ class Level {
     }
 
     render() {
-        // this.correctColors.forEach((color, index) => {
-        //     let colorBox = new ColorBox(color, index, this)
-        //     document.querySelector('#level').appendChild(colorBox.render())
-        // })
+        this.correctColors.forEach((color, index) => {
+            let colorBox = new ColorBox(color, index, this)
+            document.querySelector('#level').appendChild(colorBox.render())
+        })
+        setTimeout(() => this.renderRandom(), 2000)
+    }
+
+    renderRandom() {
+        document.querySelector('#level').innerHTML = ''
         this.randColors.forEach((color, index) => {
             let colorBox = new ColorBox(color, index, this)
             let cBElem = colorBox.render()

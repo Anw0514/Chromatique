@@ -1,7 +1,15 @@
+.colorgrid-container {
+    position: relative;
+}
+
 .colorgrid {
     display: grid;
     grid-template-columns: 100px 100px 100px 100px 100px 100px;
+    position: absolute;
 }
+
+/* .colorgrid.correct {}
+.colorgrid.random {} */
 
 .colorbox {
     width: 100px;
