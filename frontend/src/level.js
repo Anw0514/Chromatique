@@ -11,6 +11,9 @@ class Level {
         this.makeUsers(users)
         Level.all.push(this)
         this.buildColors()
+
+        // game logic
+        this.selectedBox = undefined
     }
 
     makeUsers(users) {
@@ -31,8 +34,26 @@ class Level {
             if (this.getCornerIndexes().includes(index)) {
                 cBElem.classList.add('corner')
             }
+
+            cBElem.addEventListener('click', e => this.handleClick(e))
             document.querySelector('#level').appendChild(cBElem)
         })
+    }
+
+    handleClick(e) {
+        if (!this.selectedBox) {
+            this.selectedBox = e.target
+            this.selectedBox.classList.add('active')
+        } else if (this.selectedBox === e.target) {
+            this.selectedBox.classList.remove('active')
+            this.selectedBox = null
+        } else {
+            const swapColor = e.target.style.backgroundColor
+            e.target.style.backgroundColor = this.selectedBox.style.backgroundColor
+            this.selectedBox.style.backgroundColor = swapColor
+            this.selectedBox.classList.remove('active')
+            this.selectedBox = null
+        }
     }
 
     buildColors() {
