@@ -36,7 +36,7 @@ class Level {
             let colorBox = new ColorBox(color, index, this)
             let cBElem = colorBox.render()
             if (this.getCornerIndexes().includes(index)) {
-                cBElem.classList.add('corner')
+                cBElem.classList.add('corner', 'hvr-buzz-out')
             }
 
             cBElem.addEventListener('click', e => {
@@ -47,7 +47,9 @@ class Level {
     }
 
     handleClick(e) {
-        if (!this.selectedBox) {
+        if (e.target.classList.contains('corner')) {
+            return
+        } else if (!this.selectedBox) {
             this.selectedBox = e.target
             this.selectedBox.classList.add('active')
         } else {
