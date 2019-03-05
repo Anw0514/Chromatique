@@ -1,7 +1,7 @@
 class ColorBox {
     // only for rendering colorboxes; not storing them
     constructor(color, position, level) {
-        this.color = color
+        this.color = color.replace(/\s/g, '')
         this.position = position
         this.level = level
     }

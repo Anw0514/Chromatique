@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", init)
 
 function init() {
-    Level.getLevel(4)
+    Level.getLevel(3)
 }
 
 function userLogin() {

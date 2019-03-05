@@ -12,7 +12,6 @@ class Level {
         Level.all.push(this)
         this.buildColors()
 
-        // game logic
         this.selectedBox = undefined
     }
 
@@ -35,7 +34,9 @@ class Level {
                 cBElem.classList.add('corner')
             }
 
-            cBElem.addEventListener('click', e => this.handleClick(e))
+            cBElem.addEventListener('click', e => {
+                this.handleClick(e)
+            })
             document.querySelector('#level').appendChild(cBElem)
         })
     }
@@ -44,16 +45,37 @@ class Level {
         if (!this.selectedBox) {
             this.selectedBox = e.target
             this.selectedBox.classList.add('active')
-        } else if (this.selectedBox === e.target) {
-            this.selectedBox.classList.remove('active')
-            this.selectedBox = null
         } else {
-            const swapColor = e.target.style.backgroundColor
+            const swapColor = e.target.style.backgroundColor.replace(/\s/g, '')
             e.target.style.backgroundColor = this.selectedBox.style.backgroundColor
             this.selectedBox.style.backgroundColor = swapColor
+            
+            const pos1 = parseInt(this.selectedBox.dataset.position)
+            const pos2 = parseInt(e.target.dataset.position)
+
+            this.randColors[pos2] = this.randColors[pos1]
+            this.randColors[pos1] = swapColor
+            
             this.selectedBox.classList.remove('active')
             this.selectedBox = null
         }
+
+        this.checkCompletion()
+    }
+    
+    checkCompletion() {
+        if (this.compareColors()) {
+            console.log('you are good')
+        }
+    }
+    
+    compareColors() {
+        for (let i = 0; i < this.correctColors.length; i++) {
+            const color1 = this.correctColors[i].replace(/\s/g, '')
+            const color2 = this.randColors[i].replace(/\s/g, '')
+            if (color1 !== color2) return false
+        }
+        return true
     }
 
     buildColors() {

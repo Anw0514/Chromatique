@@ -35,3 +35,11 @@
     top: 50%;
     transform: translate(-50%, -50%);
 }
+
+body {
+    margin: 20px;
+}
+
+.ui.grid {
+    margin: 0px;
+}
