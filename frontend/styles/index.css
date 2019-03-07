@@ -1,19 +1,30 @@
 .colorgrid-container {
     /* position: relative; */
+    display: grid;
+    grid-template-columns: 150px 1fr;
+
 }
 
 .colorgrid {
     display: grid;
-    grid-template-columns: 100px 100px 100px 100px 100px 100px;
-    /* position: absolute; */
+    height: 800px;
+    width: 700px;
+}
+.level-list {
+  display: grid;
+  grid-auto-columns: 400px;
+  grid-template-areas: "a a a";
+  grid-gap: 10px;
 }
 
-/* .colorgrid.correct {}
-.colorgrid.random {} */
+.level-list .colorgrid {
+    height: 200px;
+    width: 175px;
+    margin-bottom: 15px;
+}
+
 
 .colorbox {
-    width: 100px;
-    height: 100px;
     position: relative;
     transition: all 0.2s ease-in-out;
     z-index: 1;
@@ -42,10 +53,6 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-}
-
-.level-list .colorgrid {
-    margin-bottom: 15px;
 }
 
 body {

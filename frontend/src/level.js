@@ -22,13 +22,16 @@ class Level {
     }
 
     render(container) {
-        const title = document.createElement('h2')
+        container.classList.add('colorgrid-container')
+
+        const title = document.createElement('h3')
         title.classList.add('level-title')
         title.innerText = this.name
         container.appendChild(title)
-
         const grid = document.createElement('div')
         grid.classList.add('colorgrid')
+        // grid.style.gridAutoColumns = this.generateColPercent()
+        grid.style.gridTemplateColumns = `repeat(${this.grid_size}, 1fr)`
         
         this.correctColors.forEach((color, index) => {
             let colorBox = new ColorBox(color, index, this)
@@ -36,6 +39,11 @@ class Level {
         })
 
         container.appendChild(grid)
+    }
+
+    generateColPercent() {
+        const percentage = this.grid_size / this.correctColors
+        return `${percentage}%;`
     }
     
     compareColors() {
