@@ -80,8 +80,13 @@ class Level {
         return interpolatedColorArray;
     }
 
-    static getLevels() {
-
+    static getLevels(callback) {
+        fetch(Level.api)
+            .then(resp => resp.json())
+            .then(json => {
+                const levels = json.map(l => new Level(l))
+                callback.call(this, levels)
+            })
     }
 
     static getLevelJSON(id) {
@@ -90,7 +95,7 @@ class Level {
     }
 
     static getLevel(id, callback) {
-        return Level.getLevelJSON(id).then(json => {
+        Level.getLevelJSON(id).then(json => {
             const level = new Level(json)
             level.render(document.querySelector('#level'))
         })
