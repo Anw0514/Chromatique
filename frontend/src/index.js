@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", init)
 
 function init() {
     level(1)
+    loadPage('levels')
+    document.querySelectorAll('#nav-menu a')
+        .forEach(item => item.addEventListener('click', handleNav))
 }
 
 function mainContainer(selector) {
@@ -17,8 +20,16 @@ function userLogin() {
 
 }
 
-function renderNav() {
+function handleNav(e) {
+    const page = e.target.dataset.page
+    loadPage(page)
+}
 
+function loadPage(page) {
+    document.querySelectorAll('#nav-menu a.active')
+        .forEach(item => item.classList.remove('active'))
+    const navItem = document.querySelector(`#nav-menu [data-page="${page}"]`)
+    navItem.classList.add('active')
 }
 
 function levels() {
