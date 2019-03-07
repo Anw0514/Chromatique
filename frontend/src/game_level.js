@@ -1,7 +1,7 @@
 class GameLevel extends Level {
     render(container) {
         super.render(container)
-        setTimeout(() => this.renderRandom(container), 2000)
+        setTimeout(() => this.renderRandom(container), 1000)
     }
 
     buildColors() {
@@ -38,7 +38,12 @@ class GameLevel extends Level {
 
     chuffle(arr) {
         let res = arr.slice()
-        for (let i = res.length - 1; i > 0; i--) {
+        
+        // app.difficulty is a value between 0.0 and 1.0
+        // primarily exists to simplify/shorten demo
+        let max = Math.floor((res.length - 1) * app.difficulty);
+
+        for (let i = max; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             if (!this.getCornerIndexes().includes(i) && !this.getCornerIndexes().includes(j)) {
                 [res[i], res[j]] = [res[j], res[i]];
@@ -66,15 +71,47 @@ class GameLevel extends Level {
             
             this.selectedBox.classList.remove('active')
             this.selectedBox = null
+
+            this.checkCompletion()
         }
 
-        this.checkCompletion()
     }
-    
+
     checkCompletion() {
         if (this.compareColors()) {
-            console.log('you are good')
+            this.markCompleted()
+            this.congratulate()
+            window.loadPage('levels')
         }
+    }
+
+    markCompleted() {
+        return fetch(`${Level.api}/${this.id}/users/${app.user.id}`, {method: 'POST'})
+    }
+
+    congratulate() {
+        const title = "You did it!"
+        const message = "We never thought you'd be able to do it, but you sure proved us wrong."
+        const action = "You Did Good"
+
+        const modal = document.createElement('div')
+        modal.classList.add('ui', 'basic', 'modal')
+        
+        const icon = `<i class="eye dropper icon"></i>`
+        modal.innerHTML += `<div class="ui icon header">${icon}${title}</div>`
+        modal.innerHTML += `<div class="content">${message}</div>`
+
+        const button = document.createElement('button')
+        button.classList.add('ui', 'green', 'ok', 'inverted', 'button')
+        button.innerHTML = `<i class="checkmark icon"></i>${action}`
+
+        const actions = document.createElement('div')
+        actions.classList.add('actions')
+        actions.appendChild(button)
+        modal.appendChild(actions)
+
+        document.body.appendChild(modal)
+        $(modal).modal('show')
     }
 
     static getLevel(id, callback) {
