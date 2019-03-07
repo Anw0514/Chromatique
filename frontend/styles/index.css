@@ -1,6 +1,14 @@
 body {
-  background-color: #f3f7fa;
+    background-color: #f3f7fa;
+    margin: 20px;
+    overflow: scroll;
 }
+
+.ui.grid {
+    margin: 0px;
+}
+
+/* header */
 
 header {
     text-align: center;
@@ -13,6 +21,32 @@ header {
   margin: 0 auto;
 }
 
+/* nav */
+
+.nav-menu {
+    border: none !important;
+}
+.nav-menu .item {}
+
+/* container */
+
+.container {
+    min-width: 1200px;
+}
+
+/* main */
+
+.main#main {
+    width: auto !important;
+    background: #FFFFFF;
+    border: 1px solid #DEDFE3;
+    border-radius: 10px;
+    box-shadow: 0 1px 15px 0 rgba(0,0,0,0.06);
+    padding: 1.5rem;
+}
+
+/* levels/colorgrid */
+
 .colorgrid-container {
     display: grid;
     grid-template-columns: 150px 1fr;
@@ -22,7 +56,9 @@ header {
     display: grid;
     height: 800px;
     width: 700px;
+    box-shadow: 0 0 15px 3px rgba(0, 0, 0, 0.15);
 }
+
 .level-list {
   display: grid;
   grid-auto-columns: 400px;
@@ -35,7 +71,6 @@ header {
     width: 175px;
     margin-bottom: 15px;
 }
-
 
 .colorbox {
     position: relative;
@@ -66,14 +101,6 @@ header {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-}
-
-body {
-    margin: 20px;
-}
-
-.ui.grid {
-    margin: 0px;
 }
 
 /* Buzz Out */
