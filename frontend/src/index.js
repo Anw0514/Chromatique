@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", init)
 
+const app = {
+    user: {id: 1}
+}
+
 function init() {
     level(1)
     document.querySelectorAll('#nav-menu a')

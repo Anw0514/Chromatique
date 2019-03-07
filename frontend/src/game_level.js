@@ -1,7 +1,7 @@
 class GameLevel extends Level {
     render(container) {
         super.render(container)
-        setTimeout(() => this.renderRandom(container), 2000)
+        setTimeout(() => this.renderRandom(container), 1000)
     }
 
     buildColors() {
@@ -66,15 +66,47 @@ class GameLevel extends Level {
             
             this.selectedBox.classList.remove('active')
             this.selectedBox = null
+
+            this.checkCompletion()
         }
 
-        this.checkCompletion()
     }
-    
+
     checkCompletion() {
         if (this.compareColors()) {
-            console.log('you are good')
+            this.markCompleted()
+            this.congratulate()
+            window.loadPage('levels')
         }
+    }
+
+    markCompleted() {
+        return fetch(`${Level.api}/${this.id}/users/${app.user.id}`, {method: 'POST'})
+    }
+
+    congratulate() {
+        const title = "You did it!"
+        const message = "We never thought you'd be able to do it, but you sure proved us wrong."
+        const action = "You Did Good"
+
+        const modal = document.createElement('div')
+        modal.classList.add('ui', 'basic', 'modal')
+        
+        const icon = `<i class="eye dropper icon"></i>`
+        modal.innerHTML += `<div class="ui icon header">${icon}${title}</div>`
+        modal.innerHTML += `<div class="content">${message}</div>`
+
+        const button = document.createElement('button')
+        button.classList.add('ui', 'green', 'ok', 'inverted', 'button')
+        button.innerHTML = `<i class="checkmark icon"></i>${action}`
+
+        const actions = document.createElement('div')
+        actions.classList.add('actions')
+        actions.appendChild(button)
+        modal.appendChild(actions)
+
+        document.body.appendChild(modal)
+        $(modal).modal('show')
     }
 
     static getLevel(id, callback) {

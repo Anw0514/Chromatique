@@ -26,8 +26,8 @@ level1 = Level.create(name: 'LEVEL 1', top_left: 'rgb(126, 203, 201)', top_right
     creator: cicada, published: true)
 end
 
-CompletedLevel.create(user: ben, level: level1)
 CompletedLevel.create(user: cicada, level: level1)
+CompletedLevel.create(user: ben, level: level1)
 
 50.times do |i|
   name = Faker::Name.name
