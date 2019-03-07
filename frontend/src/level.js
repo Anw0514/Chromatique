@@ -22,10 +22,20 @@ class Level {
     }
 
     render(container) {
+        const title = document.createElement('h2')
+        title.classList.add('level-title')
+        title.innerText = this.name
+        container.appendChild(title)
+
+        const grid = document.createElement('div')
+        grid.classList.add('colorgrid')
+        
         this.correctColors.forEach((color, index) => {
             let colorBox = new ColorBox(color, index, this)
-            container.appendChild(colorBox.render())
+            grid.appendChild(colorBox.render())
         })
+
+        container.appendChild(grid)
     }
     
     compareColors() {

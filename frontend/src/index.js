@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", init)
 
 function init() {
     level(1)
-    loadPage('levels')
+    // loadPage('levels')
     document.querySelectorAll('#nav-menu a')
         .forEach(item => item.addEventListener('click', handleNav))
 }
@@ -30,24 +30,35 @@ function loadPage(page) {
         .forEach(item => item.classList.remove('active'))
     const navItem = document.querySelector(`#nav-menu [data-page="${page}"]`)
     navItem.classList.add('active')
+
+    switch (page) {
+        case 'levels':
+            levels()
+            break
+        case 'create':
+            break
+        case 'leaderboard':
+            break
+        case 'profile':
+            break
+    }
 }
 
 function levels() {
-    const levelsContainer = document.createElement('div')
-    levelsContainer.classList.add('level-list')
+    const levelContainer = document.createElement('div')
 
     resetPage()
     mainContainer().appendChild(levelContainer)
 
-    GameLevel.getLevels(id, levels => {
+    GameLevel.getLevels(levels => {
         const listing = new LevelListing(levels)
-        listing.render(levelsContainer)
+        listing.render(levelContainer)
     })
 }
 
 function level(id) {
     const levelContainer = document.createElement('div')
-    levelContainer.classList.add('colorgrid')
+    levelContainer.classList.add('colorgrid-container')
     levelContainer.id = 'level'
 
     resetPage()

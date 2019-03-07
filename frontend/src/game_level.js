@@ -18,7 +18,9 @@ class GameLevel extends Level {
         return true
     }
     renderRandom(container) {
-        container.innerHTML = ''
+        const grid = container.querySelector('.colorgrid')
+        grid.innerHTML = ''
+
         this.randColors.forEach((color, index) => {
             let colorBox = new ColorBox(color, index, this)
             let cBElem = colorBox.render()
@@ -30,7 +32,7 @@ class GameLevel extends Level {
                 this.handleClick(e)
             })
 
-            container.appendChild(cBElem)
+            grid.appendChild(cBElem)
         })
     }
 

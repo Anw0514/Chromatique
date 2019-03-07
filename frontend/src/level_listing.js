@@ -4,8 +4,12 @@ class LevelListing {
     }
     
     render(container) {
+        container.classList.add('level-list')
         this.levels.forEach(level => {
-            level.render(container)
+            const levelContainer = document.createElement('div')
+            levelContainer.classList.add('colorgrid')
+            level.render(levelContainer)
+            container.appendChild(levelContainer)
         })
     }
 }

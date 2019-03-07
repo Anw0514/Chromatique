@@ -1,11 +1,11 @@
 .colorgrid-container {
-    position: relative;
+    /* position: relative; */
 }
 
 .colorgrid {
     display: grid;
     grid-template-columns: 100px 100px 100px 100px 100px 100px;
-    position: absolute;
+    /* position: absolute; */
 }
 
 /* .colorgrid.correct {}
@@ -42,6 +42,10 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+}
+
+.level-list .colorgrid {
+    margin-bottom: 15px;
 }
 
 body {
