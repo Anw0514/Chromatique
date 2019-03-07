@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", init)
 
 function init() {
     level(1)
-    // loadPage('levels')
     document.querySelectorAll('#nav-menu a')
         .forEach(item => item.addEventListener('click', handleNav))
 }
@@ -45,14 +44,14 @@ function loadPage(page) {
 }
 
 function levels() {
-    const levelContainer = document.createElement('div')
-
+    const levelsContainer = document.createElement('div')
+    // levelContainer.classList.add('colorgrid-container')
     resetPage()
-    mainContainer().appendChild(levelContainer)
+    mainContainer().appendChild(levelsContainer)
 
     GameLevel.getLevels(levels => {
         const listing = new LevelListing(levels)
-        listing.render(levelContainer)
+        listing.render(levelsContainer)
     })
 }
 
