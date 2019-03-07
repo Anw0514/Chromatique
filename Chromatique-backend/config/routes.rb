@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :users, only: :index
   end
 
+  post 'levels/:id/users/:user_id', to: 'levels#complete' 
+  
   # /users/:id    => user show
   # /users/:id/levels    => level index belonging to a user
   # /users/:id/levels/:id    => level show
