@@ -2,17 +2,20 @@ body {
   background-color: #f3f7fa;
 }
 
+header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
 .logo {
-  width: asfssdf;
-  height: fvjneoe;
+  height: 80px;
   text-align: center;
+  margin: 0 auto;
 }
 
 .colorgrid-container {
-    /* position: relative; */
     display: grid;
     grid-template-columns: 150px 1fr;
-
 }
 
 .colorgrid {
