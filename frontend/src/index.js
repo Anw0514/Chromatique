@@ -22,7 +22,16 @@ function renderNav() {
 }
 
 function levels() {
+    const levelsContainer = document.createElement('div')
+    levelsContainer.classList.add('level-list')
 
+    resetPage()
+    mainContainer().appendChild(levelContainer)
+
+    GameLevel.getLevels(id, levels => {
+        const listing = new LevelListing(levels)
+        listing.render(levelsContainer)
+    })
 }
 
 function level(id) {
