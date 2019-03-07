@@ -19,61 +19,13 @@ class Level {
         this.users = users.map(user => {
             return new User(user)
         })
-        console.log(this.users)
     }
 
-    render() {
+    render(container) {
         this.correctColors.forEach((color, index) => {
             let colorBox = new ColorBox(color, index, this)
-            document.querySelector('#level').appendChild(colorBox.render())
+            container.appendChild(colorBox.render())
         })
-        setTimeout(() => this.renderRandom(), 2000)
-    }
-
-    renderRandom() {
-        document.querySelector('#level').innerHTML = ''
-        this.randColors.forEach((color, index) => {
-            let colorBox = new ColorBox(color, index, this)
-            let cBElem = colorBox.render()
-            if (this.getCornerIndexes().includes(index)) {
-                cBElem.classList.add('corner', 'hvr-buzz-out')
-            }
-
-            cBElem.addEventListener('click', e => {
-                this.handleClick(e)
-            })
-            document.querySelector('#level').appendChild(cBElem)
-        })
-    }
-
-    handleClick(e) {
-        if (e.target.classList.contains('corner')) {
-            return
-        } else if (!this.selectedBox) {
-            this.selectedBox = e.target
-            this.selectedBox.classList.add('active')
-        } else {
-            const swapColor = e.target.style.backgroundColor.replace(/\s/g, '')
-            e.target.style.backgroundColor = this.selectedBox.style.backgroundColor
-            this.selectedBox.style.backgroundColor = swapColor
-            
-            const pos1 = parseInt(this.selectedBox.dataset.position)
-            const pos2 = parseInt(e.target.dataset.position)
-
-            this.randColors[pos2] = this.randColors[pos1]
-            this.randColors[pos1] = swapColor
-            
-            this.selectedBox.classList.remove('active')
-            this.selectedBox = null
-        }
-
-        this.checkCompletion()
-    }
-    
-    checkCompletion() {
-        if (this.compareColors()) {
-            console.log('you are good')
-        }
     }
     
     compareColors() {
@@ -94,7 +46,6 @@ class Level {
             correctColors.push(this.interpolateColors(leftColumn[i], rightColumn[i], this.grid_size))
         }
         this.correctColors = correctColors.flat()
-        this.randColors = this.chuffle(this.correctColors)
     }
 
     getCornerIndexes() {
@@ -103,17 +54,6 @@ class Level {
         corners.push(this.correctColors.length - this.grid_size)
         corners.push(this.correctColors.length - 1)
         return corners
-    }
-
-    chuffle(arr) {
-        let res = arr.slice()
-        for (let i = res.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            if (!this.getCornerIndexes().includes(i) && !this.getCornerIndexes().includes(j)) {
-                [res[i], res[j]] = [res[j], res[i]];
-            }
-        }
-        return res;
     }
 
     interpolateColor(color1, color2, factor) {
@@ -144,12 +84,15 @@ class Level {
 
     }
 
-    static getLevel(id) {
-        fetch(Level.api + `/${id}`)
-        .then(resp => resp.json())
-        .then(jsonLevulo => {
-            let level = new Level(jsonLevulo)
-            level.render()
+    static getLevelJSON(id) {
+        return fetch(Level.api + `/${id}`)
+            .then(resp => resp.json())
+    }
+
+    static getLevel(id, callback) {
+        return Level.getLevelJSON(id).then(json => {
+            const level = new Level(json)
+            level.render(document.querySelector('#level'))
         })
     }
 }
