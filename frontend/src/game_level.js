@@ -38,7 +38,12 @@ class GameLevel extends Level {
 
     chuffle(arr) {
         let res = arr.slice()
-        for (let i = res.length - 1; i > 0; i--) {
+        
+        // app.difficulty is a value between 0.0 and 1.0
+        // primarily exists to simplify/shorten demo
+        let max = Math.floor((res.length - 1) * app.difficulty);
+
+        for (let i = max; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             if (!this.getCornerIndexes().includes(i) && !this.getCornerIndexes().includes(j)) {
                 [res[i], res[j]] = [res[j], res[i]];
