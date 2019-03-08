@@ -45,10 +45,19 @@ header {
 
 /* nav */
 
-.nav-menu {
-    border: none !important;
-}
+.nav-menu { border: none !important; }
 .nav-menu .item {}
+
+.ui.secondary.vertical.pointing.menu .item {
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out;
+    border: none;
+    font-size: 16px;
+}
+
+.ui.secondary.vertical.pointing.menu .item:hover, .ui.secondary.vertical.pointing.menu .item.active {
+    opacity: 1;
+}
 
 /* container */
 
