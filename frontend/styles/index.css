@@ -82,6 +82,10 @@ header {
     margin-left: 10px;
 }
 
+.ui.large.form {
+  width: 400px;
+}
+
 .field {
   margin-bottom: 10px;
   width: 100%;
@@ -91,10 +95,6 @@ header {
   width: 100%;
 }
 
-.ui.raised.segment {
-  width: 400px;
-  text-align: center;
-}
 
 /* levels/colorgrid */
 

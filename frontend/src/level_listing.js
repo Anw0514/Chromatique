@@ -17,30 +17,11 @@ class LevelListing {
 
     static form() {
 
-        const container = document.querySelector('.ui.container')
-        container.style.display = 'none'
-
-        const midAlign = document.createElement('div')
-        midAlign.className = 'ui '
-        midAlign.className += 'middle '
-        midAlign.className += 'aligned '
-        midAlign.className += 'center '
-        midAlign.className += 'aligned '
-        midAlign.className += 'grid'
-        midAlign.id = 'newLevel'
-        document.body.appendChild(midAlign)
-
-        const col = document.createElement('div')
-        col.className = 'center aligned column'
-        midAlign.appendChild(col)
-
-
+        const main = document.querySelector('#main')
+        main.innerHTML = ''
+        
         const form = document.createElement('form')
         form.classList.add('ui', 'large', 'form')
-
-        const mainDiv = document.createElement('div')
-        mainDiv.classList.add('ui', 'raised', 'segment')
-        form.appendChild(mainDiv)
 
         const fieldDiv = document.createElement('div')
         fieldDiv.className = 'field'
@@ -56,7 +37,7 @@ class LevelListing {
 
         fieldDiv.appendChild(titleDiv)
 
-        mainDiv.appendChild(fieldDiv)
+        form.appendChild(fieldDiv)
 
         const gridSizeField = document.createElement('div')
         gridSizeField.className = 'field'
@@ -72,7 +53,7 @@ class LevelListing {
 
         gridSizeField.appendChild(gridSizeDiv)
 
-        mainDiv.appendChild(gridSizeField)
+        form.appendChild(gridSizeField)
 
         const fieldDivs = document.createElement('div')
         fieldDivs.className = 'four fields'
@@ -142,23 +123,19 @@ class LevelListing {
         fieldDivs.appendChild(fieldDiv4)
 
 
-        mainDiv.appendChild(fieldDivs)
+        form.appendChild(fieldDivs)
 
         const submit = document.createElement('submit')
         submit.classList.add('ui', 'fluid', 'large', 'blue', 'submit', 'button')
         submit.innerHTML = 'Submit'
-        mainDiv.appendChild(submit)
+        form.appendChild(submit)
+        
+        submit.addEventListener('click', (e) => {
+            LevelListing.handleSubmit()
+            returnToLevels.remove()
+        })
 
-        submit.addEventListener('click', LevelListing.handleSubmit)
-
-        col.appendChild(form)
-
-        const returnToLevels = document.createElement('button')
-        returnToLevels.classList.add('ui', 'blue', 'basic', 'button')
-        returnToLevels.id = 'return-button'
-        returnToLevels.innerHTML = 'Return to Levels'
-
-        col.appendChild(returnToLevels)
+        main.appendChild(form)
     }
 
     static hexToRgb(arr) {
@@ -197,6 +174,11 @@ class LevelListing {
                 published: true,
                 user_id: 2
             })
-        }).then(User.handleLogin)
+        }).then(() => {
+            document.querySelector('form').remove()
+            const container = document.querySelector('.ui.container')
+            container.style.display = 'initial'
+            window.loadPage('levels')
+        })
     }
 }

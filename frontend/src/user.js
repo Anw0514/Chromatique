@@ -36,6 +36,13 @@ class User {
                 callback.call(this, levels)
             })
     }
+    
+    render() {
+        let userDiv = document.createElement('div')
+        userDiv.innerHTML = this.username
+        userDiv.classList.add('user')
+        return userDiv
+    }
 
     static getUserJSON(id) {
         return fetch(`${User.api}/${id}`)
@@ -47,13 +54,6 @@ class User {
             const user = new User(json)
             callback.call(this, user)
         })
-    }
-
-    render() {
-        let userDiv = document.createElement('div')
-        userDiv.innerHTML = this.username
-        userDiv.classList.add('user')
-        return userDiv
     }
 
     static login() {
@@ -132,6 +132,10 @@ class User {
     }
 
     static handleLogin() {
+        const username = document.querySelector('input[name="username"]').value
+        User.getUser(username, user => {
+            app.user = user
+        })
         document.querySelector('form').remove()
         const container = document.querySelector('.ui.container')
         container.style.display = 'initial'
