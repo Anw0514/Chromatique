@@ -100,7 +100,7 @@ header {
 
 .colorgrid-container {
     display: grid;
-    grid-template-columns: 180px 1fr;
+    grid-template-columns: 150px 1fr;
 }
 
 input[type="color"] {
@@ -121,7 +121,7 @@ input[type="color"] {
 .level-list {
   display: grid;
   grid-auto-columns: 400px;
-  grid-template-areas: "a a";
+  grid-template-areas: "a a a";
   grid-gap: 10px;
 }
 

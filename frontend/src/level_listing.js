@@ -130,12 +130,13 @@ class LevelListing {
         submit.innerHTML = 'Submit'
         form.appendChild(submit)
         
+        main.appendChild(form)
+        
         submit.addEventListener('click', (e) => {
             LevelListing.handleSubmit()
             returnToLevels.remove()
         })
 
-        main.appendChild(form)
     }
 
     static hexToRgb(arr) {

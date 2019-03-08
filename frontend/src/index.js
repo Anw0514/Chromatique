@@ -92,14 +92,6 @@ function level(id) {
 
 function createLevel() {
     LevelListing.form()
-    const rb = document.getElementById('return-button')
-    rb.addEventListener('click', (e) =>{
-        document.querySelector('form').remove()
-        const container = document.querySelector('.ui.container')
-        container.style.display = 'initial'
-        e.target.remove()
-        window.loadPage('levels')
-    })
 }
 
 function profile() {

@@ -13,6 +13,8 @@ DatabaseCleaner.clean
 ben = User.create(email: 'ben@gmail.com', username: 'ben', password: '123')
 cicada = User.create(email: 'anw0514@gmail.com', username: 'cicada3301', password: '123')
 shannon = User.create(email: 'shannon@gmail.com', username: 'shannon', password: '123')
+andrea = User.create(email: 'andrea@gmail.com', username: 'andrea', password: '123')
+
 
 level1 = Level.create(name: 'LEVEL 1', top_left: 'rgb(126, 203, 201)', top_right: 'rgb(246, 229, 97)', bottom_left: 'rgb(8, 55, 220)', bottom_right: 'rgb(247, 114, 89)', grid_size: 6, creator: cicada, published: true)
 level2 = Level.create(name: 'LEVEL 2', top_left: 'rgb(199, 251, 0)', top_right: 'rgb(170, 14, 150)', bottom_left: 'rgb(0, 142, 150)', bottom_right: 'rgb(255, 99, 0)', grid_size: 9, creator: cicada, published: true)
@@ -20,7 +22,7 @@ level3 = Level.create(name: 'LEVEL 3', top_left: 'rgb(227, 255, 0)', top_right: 
 level4 = Level.create(name: 'LEVEL 4', top_left: 'rgb(26, 203, 201)', top_right: 'rgb(246, 229, 0)', bottom_left: 'rgb(28, 203, 22)', bottom_right: 'rgb(247, 14, 89)', grid_size: 10, creator: cicada, published: true)
 level5 = Level.create(name: 'LEVEL 5', top_left: 'rgb(247, 203, 201)', top_right: 'rgb(246, 0, 197)', bottom_left: 'rgb(247, 55, 20)', bottom_right: 'rgb(150, 4, 250)', grid_size: 5, creator: cicada, published: true)
 level6 = Level.create(name: 'LEVEL 6', top_left: 'rgb(26, 203, 21)', top_right: 'rgb(246, 255, 97)', bottom_left: 'rgb(148, 55, 220)', bottom_right: 'rgb(0, 137, 157)', grid_size: 7, creator: cicada, published: true)
-level7 = Level.create(name: 'LEVEL 7', top_left: 'rgb(255, 0, 255)', top_right: 'rgb(55, 254, 253)', bottom_left: 'rgb(48, 0, 245)', bottom_right: 'rgb(250, 246, 0)', grid_size: 4, creator: cicada, published: true)
+level7 = Level.create(name: 'LEVEL 7', top_left: 'rgb(255, 0, 255)', top_right: 'rgb(55, 254, 253)', bottom_left: 'rgb(48, 0, 245)', bottom_right: 'rgb(20, 206, 70)', grid_size: 4, creator: cicada, published: true)
 level8 = Level.create(name: 'LEVEL 8', top_left: 'rgb(126, 203, 201)', top_right: 'rgb(40, 30, 240)', bottom_left: 'rgb(228, 55, 220)', bottom_right: 'rgb(247, 14, 9)', grid_size: 6, creator: cicada, published: true)
 level9 = Level.create(name: 'LEVEL 9', top_left: 'rgb(247, 0, 37)', top_right: 'rgb(0, 137, 157)', bottom_left: 'rgb(90, 200, 30)', bottom_right: 'rgb(247, 114, 2)', grid_size: 11, creator: cicada, published: true)
 
@@ -42,6 +44,7 @@ end
 4.times do |i|
   CompletedLevel.create(user: ben, level: levels.sample)
   CompletedLevel.create(user: shannon, level: levels.sample)
+  CompletedLevel.create(user: andrea, level: levels.sample)
 end
 
 50.times do |i|
