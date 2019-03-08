@@ -34,9 +34,9 @@ levels = [level1, level2, level3, level4, level5, level6, level7, level8, level9
     bottom_left: "rgb(#{Faker::Color.rgb_color.join(',')})", 
     bottom_right: "rgb(#{Faker::Color.rgb_color.join(',')})", 
     grid_size: Faker::Number.between(4,12),
-    creator: cicada, published: true)
+    creator: ben, published: true)
 
-  # CompletedLevel.create(user: cicada, level: newlevel)
+  CompletedLevel.create(user: cicada, level: newlevel)
 end
 
 4.times do |i|
