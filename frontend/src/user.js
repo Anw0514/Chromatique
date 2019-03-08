@@ -86,7 +86,8 @@ class User {
         const fieldDiv = document.createElement('div')
         fieldDiv.className = 'field'
         const usernameDiv = document.createElement('div')
-        usernameDiv.classList.add('ui', 'left', 'input')
+        usernameDiv.classList.add('ui', 'left', 'icon', 'input')
+        usernameDiv.innerHTML += '<i class="user icon"></i>'
         // usernameDiv.classList.add('ui', 'left', 'icon', 'input')
 
         // const usernameIcon = document.createElement('i')
@@ -107,7 +108,8 @@ class User {
         const fieldDiv1 = document.createElement('div')
         fieldDiv1.className = 'field'
         const passwordDiv = document.createElement('div')
-        passwordDiv.classList.add('ui', 'left', 'input')
+        passwordDiv.classList.add('ui', 'left', 'input', 'icon')
+        passwordDiv.innerHTML += '<i class="lock icon"></i>'
 
         const passwordInput = document.createElement('input')
         passwordInput.setAttribute('type', 'text')
