@@ -1,3 +1,5 @@
+// import { create } from "domain";
+
 document.addEventListener("DOMContentLoaded", init)
 
 const app = {
@@ -6,7 +8,7 @@ const app = {
 }
 
 function init() {
-    level(1)
+    User.login()
     document.querySelectorAll('#nav-menu a')
         .forEach(item => item.addEventListener('click', handleNav))
 }
@@ -40,6 +42,7 @@ function loadPage(page) {
             levels()
             break
         case 'create':
+            createLevel()
             break
         case 'leaderboard':
             break
@@ -51,7 +54,6 @@ function loadPage(page) {
 
 function levels() {
     const levelsContainer = document.createElement('div')
-    // levelContainer.classList.add('colorgrid-container')
     resetPage()
     mainContainer().appendChild(levelsContainer)
 
@@ -71,11 +73,20 @@ function level(id) {
 
     GameLevel.getLevel(id, level => {
         level.render(levelContainer)
+        level.renderUsers()
     })
 }
 
 function createLevel() {
-
+    LevelListing.form()
+    const rb = document.getElementById('return-button')
+    rb.addEventListener('click', (e) =>{
+        document.querySelector('form').remove()
+        const container = document.querySelector('.ui.container')
+        container.style.display = 'initial'
+        e.target.remove()
+        window.loadPage('levels')
+    })
 }
 
 function profile() {
