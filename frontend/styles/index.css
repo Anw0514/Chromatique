@@ -15,10 +15,6 @@ header {
     margin-bottom: 10px;
 }
 
-.user {
-  margin: 10px;
-}
-
 .ui.blue.ribbon.label {
   margin-left: -0.65em;
 }
@@ -29,6 +25,11 @@ header {
   margin-bottom: 20px;
   line-height: 1em;
   color: rgba(1, 15, 54, 0.7)
+}
+
+.text .user {
+  margin: 10px 0;
+  font-weight: 100;
 }
 
 .level-title {
