@@ -107,7 +107,7 @@ input[type="color"] {
 .level-list {
   display: grid;
   grid-auto-columns: 400px;
-  grid-template-areas: "a a a";
+  grid-template-areas: "a a";
   grid-gap: 10px;
 }
 
