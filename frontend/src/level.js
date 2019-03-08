@@ -60,6 +60,7 @@ class Level {
         text.appendChild(userTitle)
 
         const users = document.createElement('div')
+        users.classList.add('completed-users')
         this.users.forEach(user => {
             users.appendChild(user.render())
         })

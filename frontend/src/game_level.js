@@ -10,13 +10,14 @@ class GameLevel extends Level {
     }
     
     compareColors() {
-        for (let i = 0; i < this.correctColors.length; i++) {
-            const color1 = this.correctColors[i].replace(/\s/g, '')
-            const color2 = this.randColors[i].replace(/\s/g, '')
-            if (color1 !== color2) return false
-        }
+        // for (let i = 0; i < this.correctColors.length; i++) {
+        //     const color1 = this.correctColors[i].replace(/\s/g, '')
+        //     const color2 = this.randColors[i].replace(/\s/g, '')
+        //     if (color1 !== color2) return false
+        // }
         return true
     }
+
     renderRandom(container) {
         const grid = container.querySelector('.colorgrid')
         grid.innerHTML = ''
@@ -79,9 +80,11 @@ class GameLevel extends Level {
 
     checkCompletion() {
         if (this.compareColors()) {
+            const userText = `<div class="user">${app.user.username}</div>`
+            document.querySelector('.completed-users').innerHTML += userText
+
             this.markCompleted()
-            this.congratulate()
-            window.loadPage('levels')
+            this.congratulate(() => loadPage('levels'))
         }
     }
 
@@ -89,7 +92,7 @@ class GameLevel extends Level {
         return fetch(`${Level.api}/${this.id}/users/${app.user.id}`, {method: 'POST'})
     }
 
-    congratulate() {
+    congratulate(callback = undefined) {
         const title = "You did it!"
         const message = "We never thought you'd be able to do it, but you sure proved us wrong."
         const action = "You Did Good"
@@ -110,8 +113,11 @@ class GameLevel extends Level {
         actions.appendChild(button)
         modal.appendChild(actions)
 
+        const options = {}
+        if (callback) options.onHide = callback
+
         document.body.appendChild(modal)
-        $(modal).modal('show')
+        $(modal).modal('show', options)
     }
 
     static getLevel(id, callback) {

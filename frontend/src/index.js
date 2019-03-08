@@ -3,7 +3,7 @@
 document.addEventListener("DOMContentLoaded", init)
 
 const app = {
-    user: {id: 1},
+    user: {id: 1, username: "ben"},
     difficulty: 1.0
 }
 
