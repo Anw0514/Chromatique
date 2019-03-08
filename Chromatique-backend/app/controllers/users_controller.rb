@@ -22,6 +22,10 @@ class UsersController < ApplicationController
   end
 
   def get_user
-    @user = User.find(params[:id])
+    if params[:id] =~ /^\d+/
+      @user = User.find(params[:id])
+    else
+      @user = User.find_by!(username: params[:id])
+    end
   end
 end

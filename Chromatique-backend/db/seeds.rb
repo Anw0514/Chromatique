@@ -10,9 +10,9 @@ require 'database_cleaner'
 DatabaseCleaner.strategy = :truncation
 DatabaseCleaner.clean
 
-ben = User.create(email: 'ben@gmail.com', username: 'Ben', password: '123')
-cicada = User.create(email: 'anw0514@gmail.com', username: 'Cicada 3301', password: '123')
-shannon = User.create(email: 'shannon@gmail.com', username: 'Shannon', password: '123')
+ben = User.create(email: 'ben@gmail.com', username: 'ben', password: '123')
+cicada = User.create(email: 'anw0514@gmail.com', username: 'cicada3301', password: '123')
+shannon = User.create(email: 'shannon@gmail.com', username: 'shannon', password: '123')
 
 level1 = Level.create(name: 'LEVEL 1', top_left: 'rgb(126, 203, 201)', top_right: 'rgb(246, 229, 97)', bottom_left: 'rgb(8, 55, 220)', bottom_right: 'rgb(247, 114, 89)', grid_size: 6, creator: cicada, published: true)
 level2 = Level.create(name: 'LEVEL 2', top_left: 'rgb(199, 251, 0)', top_right: 'rgb(170, 14, 150)', bottom_left: 'rgb(0, 142, 150)', bottom_right: 'rgb(255, 99, 0)', grid_size: 9, creator: cicada, published: true)
