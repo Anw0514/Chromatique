@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", init)
 
 const app = {
     user: {id: 1},
-    difficulty: 0.3
+    difficulty: 1.0
 }
 
 function init() {
@@ -44,6 +44,7 @@ function loadPage(page) {
         case 'leaderboard':
             break
         case 'profile':
+            profile()
             break
     }
 }
@@ -78,5 +79,9 @@ function createLevel() {
 }
 
 function profile() {
-    
+    resetPage()
+
+    User.getUser(app.user.id, user => {
+        user.renderProfile(mainContainer())
+    })
 }
