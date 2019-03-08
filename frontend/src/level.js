@@ -48,6 +48,7 @@ class Level {
         })
 
         container.appendChild(grid)
+        showMain()
     }
 
     renderUsers() {

@@ -11,6 +11,7 @@ class LevelListing {
             container.appendChild(levelContainer)
             level.renderDelete()
             level.activateColorgrid()
+            showMain()
         })
     }
 

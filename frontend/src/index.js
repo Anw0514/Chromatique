@@ -8,6 +8,7 @@ const app = {
 }
 
 function init() {
+    hideMain()
     User.login()
     document.querySelectorAll('#nav-menu a')
         .forEach(item => item.addEventListener('click', handleNav))
@@ -16,6 +17,14 @@ function init() {
 function mainContainer(selector) {
     const main = document.querySelector('[role="main"]')
     return selector ? main.querySelector(selector) : main
+}
+
+function hideMain() {
+    mainContainer().classList.add('loading')
+}
+
+function showMain() {
+    mainContainer().classList.remove('loading')
 }
 
 function resetPage() {
@@ -32,6 +41,8 @@ function handleNav(e) {
 }
 
 function loadPage(page) {
+    hideMain()
+
     document.querySelectorAll('#nav-menu a.active')
         .forEach(item => item.classList.remove('active'))
     const navItem = document.querySelector(`#nav-menu [data-page="${page}"]`)
@@ -50,6 +61,8 @@ function loadPage(page) {
             profile()
             break
     }
+
+    showMain()
 }
 
 function levels() {

@@ -14,6 +14,8 @@ class User {
         userContainer.innerHTML += `<h2 class="user-name">@${this.username}</h2>`
         userContainer.innerHTML += `<h4 class="user-email">${this.email}</h4>`
 
+        showMain()
+
         // const levelContainer = document.createElement('div')
         // container.appendChild(levelContainer)
         // renderCompletedLevels(levelContainer)

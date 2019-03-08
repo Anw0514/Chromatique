@@ -8,6 +8,10 @@ body {
     margin: 0px;
 }
 
+.loading {
+    visibility: hidden !important;
+}
+
 /* header */
 
 header {
