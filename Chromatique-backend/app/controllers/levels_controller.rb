@@ -17,7 +17,7 @@ class LevelsController < ApplicationController
     Level.destroy(params[:id])
   end
 
-  private 
+  private
 
   def get_level
     @level = Level.find(params[:id])
