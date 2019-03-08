@@ -148,6 +148,24 @@ input[type="color"] {
     transform: translate(-50%, -50%);
 }
 
+/* modal */
+
+.ui.modal .header {
+    font-size: 30px;
+}
+
+.ui.modal .content {
+    font-size: 26px;
+}
+
+.ui.modal .actions {
+    float: right;
+}
+
+.ui.modal .actions .ui.button {
+    font-size: 18px;
+}
+
 /* Buzz Out */
 /* https://github.com/IanLunn/Hover */
 

@@ -2,6 +2,11 @@
 
 document.addEventListener("DOMContentLoaded", init)
 
+const app = {
+    user: {id: 1},
+    difficulty: 0.3
+}
+
 function init() {
     User.login()
     document.querySelectorAll('#nav-menu a')
