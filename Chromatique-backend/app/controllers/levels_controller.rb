@@ -18,8 +18,8 @@ class LevelsController < ApplicationController
   end
 
   def complete
-    completed_level = CompletedLevel.create!(level_id: params[:id], user_id: params[:user_id])
-      render json: completed_level, status: 200
+    completed_level = CompletedLevel.find_or_create_by!(level_id: params[:id], user_id: params[:user_id])
+    render json: completed_level, status: 200
   end
 
   private 
