@@ -10,11 +10,11 @@ class GameLevel extends Level {
     }
     
     compareColors() {
-        // for (let i = 0; i < this.correctColors.length; i++) {
-        //     const color1 = this.correctColors[i].replace(/\s/g, '')
-        //     const color2 = this.randColors[i].replace(/\s/g, '')
-        //     if (color1 !== color2) return false
-        // }
+        for (let i = 0; i < this.correctColors.length; i++) {
+            const color1 = this.correctColors[i].replace(/\s/g, '')
+            const color2 = this.randColors[i].replace(/\s/g, '')
+            if (color1 !== color2) return false
+        }
         return true
     }
 
