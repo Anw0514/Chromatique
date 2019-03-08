@@ -74,8 +74,21 @@ class GameLevel extends Level {
     checkCompletion() {
         if (this.compareColors()) {
             console.log('you are good')
+            // this.postCompletion()
         }
     }
+
+    // postCompletion() {
+    //     fetch(Level.api + `${this.id}`, {
+    //         method: 'POST',
+    //         headers: {
+
+    //         },
+    //         body: JSON.stringify({
+    //             users: 
+    //         })
+    //     })
+    // }
 
     static getLevel(id, callback) {
         return Level.getLevelJSON(id).then(json => {

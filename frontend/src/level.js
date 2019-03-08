@@ -11,7 +11,6 @@ class Level {
         this.makeUsers(users)
         Level.all.push(this)
         this.buildColors()
-
         this.selectedBox = undefined
     }
 
@@ -23,11 +22,21 @@ class Level {
 
     render(container) {
         container.classList.add('colorgrid-container')
+        const text = document.createElement('div')
+        text.classList.add('text')
+        text.id = this.id
 
         const title = document.createElement('h3')
         title.classList.add('level-title')
         title.innerText = this.name
-        container.appendChild(title)
+        text.appendChild(title)
+
+        const creator = document.createElement('h4')
+        creator.innerHTML = `Created by: `
+        creator.appendChild(this.creator.render())
+        text.appendChild(creator)
+
+        container.appendChild(text)
         const grid = document.createElement('div')
         grid.classList.add('colorgrid')
         // grid.style.gridAutoColumns = this.generateColPercent()
@@ -39,6 +48,65 @@ class Level {
         })
 
         container.appendChild(grid)
+    }
+
+    renderUsers() {
+        const text = document.querySelector('.text')
+        const title = document.querySelector('h3')
+        title.classList.add('ui', 'blue', 'ribbon', 'label')
+        const userTitle = document.createElement('h4')
+        userTitle.innerHTML = 'Completed by: '
+        text.appendChild(userTitle)
+
+        const users = document.createElement('div')
+        this.users.forEach(user => {
+            users.appendChild(user.render())
+        })
+        text.appendChild(users)
+    }
+
+    renderDelete() {
+        const text = document.getElementById(`${this.id}`)
+        const deleteButton = document.createElement('button')
+        deleteButton.classList.add('ui', 'inverted', 'secondary', 'button')
+        deleteButton.innerHTML = 'Remove'
+        deleteButton.addEventListener('click', () => {
+            this.handleDelete()
+        })
+        text.appendChild(deleteButton)
+    }
+
+    activateColorgrid() {
+        const text = document.getElementById(`${this.id}`)
+        const colorgrid = text.nextSibling
+        colorgrid.addEventListener('click', () => {
+            const levelContainer = document.createElement('div')
+            levelContainer.classList.add('colorgrid-container')
+            levelContainer.id = 'level'
+
+            resetPage()
+            mainContainer().appendChild(levelContainer)
+
+            GameLevel.getLevel(this.id, (level) => {
+                level.render(levelContainer)
+                level.renderUsers()
+            })
+        })
+    }
+
+    handleDelete() {
+        fetch(Level.api + `/${this.id}`, {
+            method: 'DELETE'
+        }).then(() => {
+            const levelsContainer = document.createElement('div')
+            resetPage()
+            mainContainer().appendChild(levelsContainer)
+            
+            GameLevel.getLevels(levels => {
+                const listing = new LevelListing(levels)
+                listing.render(levelsContainer)
+            })
+        })
     }
 
     generateColPercent() {
