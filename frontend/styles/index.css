@@ -142,6 +142,10 @@ input[type="color"] {
     margin-bottom: 15px;
 }
 
+#solution-button {
+    margin-bottom: 20px;
+}
+
 .colorbox {
     position: relative;
     transition: all 0.2s ease-in-out;
