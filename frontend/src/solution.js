@@ -12,7 +12,7 @@ class Solution {
         const btn = document.createElement('button')
         btn.className = 'ui inverted secondary button'
         btn.innerHTML = 'Peek at Solution'
-        
+
         sol.appendChild(btn)
         this.activate(btn, level, sol)
 
@@ -22,7 +22,13 @@ class Solution {
 
     activate(elem, level, container) {
         elem.addEventListener('click', () => {
-            this.showLevel(level, container)
+            if (this.showAnswer) {
+                this.removeLevel()
+                this.showAnswer = false
+            } else {
+                this.showLevel(level, container)
+                this.showAnswer = true
+            }
         })
     }
 
@@ -35,4 +41,9 @@ class Solution {
         level.activateColorgrid()
         showMain()
     }
+
+    removeLevel(){
+
+    }
+
 }
