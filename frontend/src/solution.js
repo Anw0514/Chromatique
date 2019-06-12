@@ -9,14 +9,21 @@ class Solution {
         sol.className = "ui four wide column"
         sol.id = "answer"
 
-        this.showLevel(level, sol)
+        const btn = document.createElement('button')
+        btn.className = 'ui inverted secondary button'
+        btn.innerHTML = 'Peek at Solution'
+        
+        sol.appendChild(btn)
+        this.activate(btn, level, sol)
 
         const container = document.getElementById("main-grid")
         container.appendChild(sol)
     }
 
-    activate() {
-        
+    activate(elem, level, container) {
+        elem.addEventListener('click', () => {
+            this.showLevel(level, container)
+        })
     }
 
     showLevel(level, container) {
