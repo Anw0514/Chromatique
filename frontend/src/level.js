@@ -37,17 +37,23 @@ class Level {
         text.appendChild(creator)
 
         container.appendChild(text)
+
+        this.renderGrid(container)
+        
+        showMain()
+    }
+
+    renderGrid(container) {
         const grid = document.createElement('div')
         grid.classList.add('colorgrid')
         grid.style.gridTemplateColumns = `repeat(${this.grid_size}, 1fr)`
-        
+
         this.correctColors.forEach((color, index) => {
             let colorBox = new ColorBox(color, index, this)
             grid.appendChild(colorBox.render())
         })
 
         container.appendChild(grid)
-        showMain()
     }
 
     renderUsers() {
@@ -91,6 +97,8 @@ class Level {
             GameLevel.getLevel(this.id, (level) => {
                 level.render(levelContainer)
                 level.renderUsers()
+                const ans = new Solution()
+                ans.render(this)
             })
         })
     }

@@ -2,8 +2,6 @@ class GameLevel extends Level {
     render(container) {
         super.render(container)
         setTimeout(() => this.renderRandom(container), 1500)
-        const ans = new Solution()
-        ans.render(this)
     }
 
     buildColors() {

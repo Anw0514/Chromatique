@@ -1,17 +1,31 @@
 class Solution {
-    // level.render(levelContainer)
-    // container.appendChild(levelContainer)
-    // level.renderDelete()
-    // level.activateColorgrid()
-    // showMain()
+
+    constructor() {
+        this.showAnswer = false
+    }
 
     render(level) {
         const sol = document.createElement('div')
         sol.className = "ui four wide column"
         sol.id = "answer"
 
+        this.showLevel(level, sol)
+
         const container = document.getElementById("main-grid")
         container.appendChild(sol)
-        console.log(level)
+    }
+
+    activate() {
+        
+    }
+
+    showLevel(level, container) {
+        const levelContainer = document.createElement('div')
+        levelContainer.className = 'colorgrid'
+        level.renderGrid(levelContainer)
+        container.appendChild(levelContainer)
+        level.renderDelete()
+        level.activateColorgrid()
+        showMain()
     }
 }

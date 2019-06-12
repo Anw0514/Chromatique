@@ -136,7 +136,7 @@ input[type="color"] {
   grid-gap: 10px;
 }
 
-.level-list .colorgrid {
+.level-list .colorgrid, #answer .colorgrid {
     height: 200px;
     width: 175px;
     margin-bottom: 15px;

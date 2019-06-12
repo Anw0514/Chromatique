@@ -89,6 +89,7 @@ function level(id) {
     GameLevel.getLevel(id, level => {
         level.render(levelContainer)
         level.renderUsers()
+        
     })
 }
 
