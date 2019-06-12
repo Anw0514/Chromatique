@@ -14,6 +14,7 @@ class Solution {
         btn.innerHTML = 'Peek at Solution'
 
         sol.appendChild(btn)
+
         this.activate(btn, level, sol)
 
         const container = document.getElementById("main-grid")
@@ -22,8 +23,9 @@ class Solution {
 
     activate(elem, level, container) {
         elem.addEventListener('click', () => {
+            container.innerHTML = ''
             if (this.showAnswer) {
-                this.removeLevel()
+                this.showButton(container, level)
                 this.showAnswer = false
             } else {
                 this.showLevel(level, container)
@@ -39,11 +41,16 @@ class Solution {
         container.appendChild(levelContainer)
         level.renderDelete()
         level.activateColorgrid()
+        this.activate(levelContainer, level, container)
         showMain()
     }
 
-    removeLevel(){
-
+    showButton(container, level) {
+        const btn = document.createElement('button')
+        btn.className = 'ui inverted secondary button'
+        btn.innerHTML = 'Peek at Solution'
+        container.appendChild(btn)
+        this.activate(btn, level, container)
     }
 
 }
