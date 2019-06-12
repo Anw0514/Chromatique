@@ -39,7 +39,6 @@ class Level {
         container.appendChild(text)
         const grid = document.createElement('div')
         grid.classList.add('colorgrid')
-        // grid.style.gridAutoColumns = this.generateColPercent()
         grid.style.gridTemplateColumns = `repeat(${this.grid_size}, 1fr)`
         
         this.correctColors.forEach((color, index) => {
@@ -64,7 +63,6 @@ class Level {
         this.users.forEach(user => {
             users.appendChild(user.render())
         })
-        console.log('in renderUsers of level.js')
         text.appendChild(users)
     }
 

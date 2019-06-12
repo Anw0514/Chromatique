@@ -1,7 +1,9 @@
 class GameLevel extends Level {
     render(container) {
         super.render(container)
-        setTimeout(() => this.renderRandom(container), 1000)
+        setTimeout(() => this.renderRandom(container), 1500)
+        const ans = new Solution()
+        ans.render(this)
     }
 
     buildColors() {
@@ -82,7 +84,7 @@ class GameLevel extends Level {
         if (this.compareColors()) {
             const userList = document.querySelector('.completed-users')
             const userText = `<div class="user">${app.user.username}</div>`
-            
+
             if (!userList.innerHTML.includes(userText) && app.user.username != undefined) {
                 userList.innerHTML += userText
             }

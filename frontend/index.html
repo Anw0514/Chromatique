@@ -2,6 +2,7 @@
     <head>
         <meta charset="utf-8">
         <title>Chromatique</title>
+        <script src="src/solution.js"></script>
         <script src="src/colorbox.js"></script>
         <script src="src/level.js"></script>
         <script src="src/game_level.js"></script>
@@ -13,16 +14,16 @@
     </head>
     <body>
         <header><img src="assets/logo.png" class="logo" alt=""></header>
-        <div class="ui container"><div class="ui grid">
+        <div class="ui container"><div id="main-grid" class="ui grid">
             <nav id="nav-menu" class="ui two wide column secondary vertical pointing menu nav-menu">
                 <a class="item" href="#" data-page="levels">Levels</a>
                 <a class="item" href="#" data-page="create">Create</a>
                 <!-- <a class="item" href="#" data-page="leaderboard">Leaderboard</a>-->
                 <a class="item" href="#" data-page="profile">Profile</a>
             </nav>
-            <div role="main" id="main" class="ui main nine wide column"></div>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-            <script src="src/semantic.min.js"></script>
+            <div role="main" id="main" class="main ui nine wide column"></div>
         </div></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="src/semantic.min.js"></script>
     </body>
 </html>
