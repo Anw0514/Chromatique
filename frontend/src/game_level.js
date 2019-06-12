@@ -82,9 +82,7 @@ class GameLevel extends Level {
         if (this.compareColors()) {
             const userList = document.querySelector('.completed-users')
             const userText = `<div class="user">${app.user.username}</div>`
-            console.log(app.user.username)
-            console.log(app.user.username != undefined)
-            console.log(app.user.username !== undefined)
+            
             if (!userList.innerHTML.includes(userText) && app.user.username != undefined) {
                 userList.innerHTML += userText
             }
