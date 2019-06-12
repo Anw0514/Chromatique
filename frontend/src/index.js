@@ -3,11 +3,13 @@
 document.addEventListener("DOMContentLoaded", init)
 
 const app = {
+    // sets default values for the user when fetches need to be made (specifically, when adding or completing a level)
     user: {id: 1, username: "ben"},
     difficulty: 1.0
 }
 
 function init() {
+    // initializes fucntionality
     hideMain()
     User.login()
     document.querySelectorAll('#nav-menu a')

@@ -57,14 +57,16 @@ class User {
     }
 
     static login() {
+        // renders the login form for the user.
 
         const container = document.querySelector('.ui.container')
         container.style.display = 'none'
 
         const midAlign = document.createElement('div')
+        // needed to do += for semantic; still didn't work to make it center aligned.
         midAlign.className = 'ui ' 
-        midAlign.className += 'middle '
-        midAlign.className += 'aligned '
+        // midAlign.className += 'middle '
+        // midAlign.className += 'aligned '
         midAlign.className += 'center '
         midAlign.className += 'aligned '
         midAlign.className += 'grid'
@@ -77,7 +79,7 @@ class User {
         
 
         const form = document.createElement('form')
-        form.classList.add('ui', 'large', 'form')
+        form.classList.add('ui', 'center', 'aligned', 'large', 'form')
 
         const mainDiv = document.createElement('div')
         mainDiv.classList.add('ui', 'raised', 'segment')
