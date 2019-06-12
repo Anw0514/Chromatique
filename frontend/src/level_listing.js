@@ -134,7 +134,7 @@ class LevelListing {
         
         submit.addEventListener('click', (e) => {
             LevelListing.handleSubmit()
-            returnToLevels.remove()
+            // returnToLevels.remove()
         })
 
     }

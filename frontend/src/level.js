@@ -64,6 +64,7 @@ class Level {
         this.users.forEach(user => {
             users.appendChild(user.render())
         })
+        console.log('in renderUsers of level.js')
         text.appendChild(users)
     }
 

@@ -80,8 +80,14 @@ class GameLevel extends Level {
 
     checkCompletion() {
         if (this.compareColors()) {
+            const userList = document.querySelector('.completed-users')
             const userText = `<div class="user">${app.user.username}</div>`
-            document.querySelector('.completed-users').innerHTML += userText
+            console.log(app.user.username)
+            console.log(app.user.username != undefined)
+            console.log(app.user.username !== undefined)
+            if (!userList.innerHTML.includes(userText) && app.user.username != undefined) {
+                userList.innerHTML += userText
+            }
 
             this.markCompleted()
             this.congratulate(() => loadPage('levels'))
