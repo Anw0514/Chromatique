@@ -31,6 +31,8 @@ function showMain() {
 
 function resetPage() {
     mainContainer().innerHTML = ''
+    const solution = document.getElementById('answer')
+    solution ? solution.parentNode.removeChild(solution) : null
 }
 
 function userLogin() {
