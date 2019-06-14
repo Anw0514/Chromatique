@@ -40,9 +40,7 @@ class Solution {
         levelContainer.className = 'colorgrid'
         level.renderGrid(levelContainer)
         container.appendChild(levelContainer)
-        level.activateColorgrid()
         this.activate(levelContainer, level, container)
-        showMain()
     }
 
     showButton(container, level, text) {
